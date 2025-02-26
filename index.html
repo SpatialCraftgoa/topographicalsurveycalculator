@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topographical Survey Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 25px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+        }
+        .note {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #d9534f;
+        }
+        .note a {
+            color: blue;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+        .note a:hover {
+            color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                width: 90%;
+                max-width: 350px;
+                padding: 25px;
+            }
+            input, button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Topographical Survey Pricing Calculator</h2>
+        <p class="note">This calculator only accepts area in square meters. If you have a different unit, please use <a href="https://www.magicbricks.com/area-converter-pppfa" target="_blank">this conversion tool</a>.</p>
+        <input type="number" id="area" placeholder="Enter area in sqm">
+        <button onclick="calculatePrice()">Calculate Price</button>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function calculatePrice() {
+            let area = parseFloat(document.getElementById("area").value);
+            let price = 0;
+
+            if (area <= 8333) {
+                price = 25000;
+            } else if (area > 8333 && area <= 50000) {
+                price = area * 3;
+            } else if (area > 50000 && area <= 75000) {
+                price = 150000 + (area - 50000) * 2.75;
+            } else if (area > 75000 && area <= 150000) {
+                price = 218750 + (area - 75000) * 2.5;
+            } else {
+                price = area * 2;
+            }
+
+            document.getElementById("result").innerText = "Total Price: ₹" + price.toLocaleString("en-IN");
+        }
+    </script>
+</body>
+</html>
 
