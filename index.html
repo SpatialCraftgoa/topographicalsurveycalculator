@@ -18,29 +18,28 @@
         }
         .container {
             background: white;
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
             text-align: center;
-            max-width: 600px;
+            max-width: 500px;
             width: 100%;
         }
         h2 {
-            font-size: 28px;
             color: #333;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         input {
             width: calc(100% - 20px);
-            padding: 15px;
+            padding: 12px;
             font-size: 18px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         button {
             width: 100%;
-            padding: 15px;
+            padding: 12px;
             font-size: 18px;
             background-color: #007bff;
             color: white;
@@ -53,23 +52,15 @@
             background-color: #0056b3;
         }
         #result {
-            margin-top: 25px;
-            font-size: 22px;
+            margin-top: 20px;
+            font-size: 20px;
             font-weight: bold;
             color: #333;
         }
         .note {
-            margin-top: 20px;
-            font-size: 16px;
+            margin-top: 15px;
+            font-size: 14px;
             color: #d9534f;
-        }
-        .note a {
-            color: blue;
-            text-decoration: underline;
-            transition: color 0.3s;
-        }
-        .note a:hover {
-            color: #0056b3;
         }
         @media (max-width: 600px) {
             body {
@@ -77,12 +68,12 @@
             }
             .container {
                 width: 90%;
-                max-width: 350px;
-                padding: 25px;
+                max-width: 400px;
+                padding: 30px;
             }
             input, button {
-                font-size: 14px;
-                padding: 10px;
+                font-size: 16px;
+                padding: 12px;
             }
         }
     </style>
@@ -90,7 +81,7 @@
 <body>
     <div class="container">
         <h2>Topographical Survey Pricing Calculator</h2>
-       
+      
         <input type="number" id="area" placeholder="Enter area in sqm">
         <button onclick="calculatePrice()">Calculate Price</button>
         <h3 id="result"></h3>
@@ -110,7 +101,7 @@
             } else if (area > 75000 && area <= 150000) {
                 price = 218750 + (area - 75000) * 2.5;
             } else {
-                price = area * 2;
+                price = 406250 + (area - 150000) * 2;
             }
 
             document.getElementById("result").innerText = "Total Price: ₹" + price.toLocaleString("en-IN");
