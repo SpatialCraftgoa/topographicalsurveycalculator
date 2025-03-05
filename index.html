@@ -20,7 +20,7 @@
             background: white;
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
             text-align: center;
             max-width: 500px;
             width: 100%;
@@ -28,11 +28,12 @@
         h2 {
             color: #333;
             margin-bottom: 20px;
+            font-size: 24px;
         }
         input {
             width: calc(100% - 20px);
             padding: 12px;
-            font-size: 18px;
+            font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
             margin-bottom: 15px;
@@ -40,7 +41,7 @@
         button {
             width: 100%;
             padding: 12px;
-            font-size: 18px;
+            font-size: 16px;
             background-color: #007bff;
             color: white;
             border: none;
@@ -68,12 +69,12 @@
             }
             .container {
                 width: 90%;
-                max-width: 400px;
-                padding: 30px;
+                max-width: 350px;
+                padding: 25px;
             }
             input, button {
-                font-size: 16px;
-                padding: 12px;
+                font-size: 14px;
+                padding: 10px;
             }
         }
     </style>
@@ -81,7 +82,7 @@
 <body>
     <div class="container">
         <h2>Topographical Survey Pricing Calculator</h2>
-      
+        <p class="note">Please enter area in square meters (sqm).</p>
         <input type="number" id="area" placeholder="Enter area in sqm">
         <button onclick="calculatePrice()">Calculate Price</button>
         <h3 id="result"></h3>
@@ -92,16 +93,14 @@
             let area = parseFloat(document.getElementById("area").value);
             let price = 0;
 
-            if (area <= 8333) {
+            if (area <= 8333.3333) {
                 price = 25000;
-            } else if (area > 8333 && area <= 50000) {
+            } else if (area > 8333.3333 && area <= 30000) {
                 price = area * 3;
-            } else if (area > 50000 && area <= 75000) {
-                price = 150000 + (area - 50000) * 2.75;
-            } else if (area > 75000 && area <= 150000) {
-                price = 218750 + (area - 75000) * 2.5;
+            } else if (area > 30000 && area <= 70000) {
+                price = 90000 + (area - 30000) * 2.5;
             } else {
-                price = 406250 + (area - 150000) * 2;
+                price = 190000 + (area - 70000) * 2;
             }
 
             document.getElementById("result").innerText = "Total Price: ₹" + price.toLocaleString("en-IN");
